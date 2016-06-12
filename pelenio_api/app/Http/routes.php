@@ -24,7 +24,8 @@ Route::group(['middleware' => ['api']], function () {
 
 
 Route::group(['middleware' => ['api','cors'],'prefix' => 'api'], function () {	
-	//Route::resource('contato', 'ContatoController');	
+	//Route::resource('contato', 'ContatoController');
+    Route::get('operadora', 'OperadoraController@index'); 	
     Route::post('register', 'AuthenticateController@register');
     Route::post('login', 'AuthenticateController@login');
     Route::group(['middleware' => 'jwt-auth'], function () {
@@ -36,6 +37,7 @@ Route::group(['middleware' => ['api','cors'],'prefix' => 'api'], function () {
 Route::group(['middleware' => ['web']], function () {  
 	Route::resource('notes', 'NoteController');     
     Route::get('contato', 'ContatoController@index'); 
+    Route::get('contato/{id}', 'ContatoController@show'); 
     Route::post('contato', 'ContatoController@store');
     Route::post('contato/delete', 'ContatoController@destroy'); 
 });

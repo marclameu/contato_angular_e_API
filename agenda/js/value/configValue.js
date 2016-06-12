@@ -3,5 +3,6 @@
 //A diferença é que .constant pode ser injetado nos serviços do tipo providers, já o .value não.
 angular.module("listaTelefonica")
 	.value("config", {
-		 baseUrl: "http://localhost/contato"
+		 baseUrl: "http://localhost/contato",
+		 baseApiUrl: "http://localhost/api"
 	});

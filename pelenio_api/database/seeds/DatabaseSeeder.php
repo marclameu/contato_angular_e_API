@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use App\User;
 use App\Contato;
 use Illuminate\Database\Eloquent\Model;
+use App\Operadora;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,6 +16,26 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
+        $operadoras = array(
+            ['nome' => 'Oi',     'codigo' => '21', 'categoria' => 'celular'],
+            ['nome' => 'Vivo',   'codigo' => '15', 'categoria' => 'celular'],
+            ['nome' => 'Tim',    'codigo' => '05', 'categoria' => 'celular'],
+            ['nome' => 'Claro',  'codigo' => '31', 'categoria' => 'celular'],
+            ['nome' => 'Vivo',   'codigo' => '15', 'categoria' => 'celular'],
+            ['nome' => 'Net',    'codigo' => '00', 'categoria' => 'fixo'],
+            ['nome' => 'Gvt',    'codigo' => '00', 'categoria' => 'fixo'],
+
+        );
+
+
+
+        foreach ($operadoras as $operadora)
+
+        {
+            Operadora::create($operadora);
+        }
+
+        /*
         $contatos = array(
             ['nome' => 'Ryan_Chenkie',   'telefone' => '3363-2795'],
             ['nome' => 'Chris_Sevilleja','telefone' => '4531-4135'],
@@ -26,6 +47,7 @@ class DatabaseSeeder extends Seeder
         {
             Contato::create($contato);
         }
+        */
         // $this->call(UsersTableSeeder::class);
         /*
 		$users = array(

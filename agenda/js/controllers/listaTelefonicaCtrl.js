@@ -1,45 +1,21 @@
 angular.module("listaTelefonica")
-	.controller("listaTelefonicaCtrl", function($scope, $http, listaTelefonicaService, serialGenerator){
+	.controller("listaTelefonicaCtrl", function($scope, $http, $location, listaTelefonicaService, serialGenerator, contatosList){
 		$scope.app = "Lista Telefonica";	
 		$scope.contato = {
 			data: 417754800000
 		};	
-		$scope.operadoras = [
-			{nome: "Oi", codigo: 14, categoria: "celular"},
-			{nome: "Vivo", codigo: 15, categoria: "celular"},
-			{nome: "Tim", codigo: 41, categoria: "celular"},
-			{nome: "GVT", codigo: 44, categoria: "fixo"},
-			{nome: "NET", codigo: 88, categoria: "fixo"}					
-		];
 
-		var carregarContatos = function(){			
-			listaTelefonicaService.getContatos().then(function success(response){
-				$scope.contatos = response.data;				
-			}, function error(response){
-				$scope.erro = "Não foi possível carregar os dados";
-				console.log("Ocorreu o erro: " + response.data + " status "+ response.status);
-			});
-		};
+		console.log(contatosList);
 
-		$scope.adicionarContato = function(contato){
-			contato.serial = serialGenerator.generate();
-			listaTelefonicaService.salvarContato(contato).then(function success(response){		
-				delete $scope.contato;					
-				carregarContatos();						
-				$scope.message = 'Cadastro efetuado!';	
-			}, function error(response){
+		$scope.contatos = contatosList.data;
 
-				console.log("Ocorreu o erro: " + response.data + " status "+ response.status);
-			});			
-			$scope.contatoForm.$setPristine();
-		}
 
 		$scope.apagarContatos = function(contatos){
 			contatosSelecionados = getSelecionados(contatos);
 			
 			listaTelefonicaService.deletarContatos(contatosSelecionados).success(function(response){
 					$scope.message = response["mensagem"] ;
-					carregarContatos();
+					$location.path("/contatos");
 			}).error(function(response){
 					$scope.message = response["mensagem"];
 			});
@@ -60,7 +36,7 @@ angular.module("listaTelefonica")
 			});					
 		}		
 
-		carregarContatos();
+		//carregarContatos();
 		$scope.selecionado = "selecionado";
 		$scope.negrito = "negrito";
 	});

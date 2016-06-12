@@ -8,6 +8,10 @@ angular.module("listaTelefonica")
 			return $http.post(config.baseUrl, contato);
 		};
 
+		var _getContato = function(id){
+			return $http.get(config.baseUrl + "/" + id);
+		}
+
 		var _deletarContatos = function(contatos){
 			ids = [];
 			angular.forEach(contatos, function(contato, index){
@@ -32,6 +36,7 @@ angular.module("listaTelefonica")
 		return {
 			getContatos: _getContatos,
 			salvarContato: _salvarContato,
-			deletarContatos: _deletarContatos
+			getContato: _getContato,
+			deletarContatos: _deletarContatos			
 		};
 	});

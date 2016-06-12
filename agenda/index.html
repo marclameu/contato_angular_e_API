@@ -9,86 +9,25 @@
 
 	
 </head>
-<body ng-controller="listaTelefonicaCtrl">
-
-	<div class="jumbotron">	
-
-		<ui-accordions>
-			<ui-accordion title="accordion 1">
-			   Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-			</ui-accordion>	
-
-			<ui-accordion title="accordion 2">
-			   Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-			</ui-accordion>	
-		</ui-accordions>		
-
-		<h3>{{app}}</h3>	
-
-
-		<ui-Alert title="Ops, ocorreu um problema!" message="erro2">			
-			{{erro}}
-		</ui-alert>
-		<input type="text" class="form-control" ng-model="filtro" placeholder="O que voce procura?">
-		<table class="table" ng-show="contatos.length > 0">
-			<thead>
-				<th></th>
-				<th>Serial</th>
-				<th><a href="">Nome</th>
-				<th>Telefone</th>
-				<th>Operadora</th>
-				<th></th>
-			</thead>	
-			<TBODY>
-				<tr ng-class="{selecionado: contato.selecionado, negrito: contato.selecionado}" ng-repeat="contato in contatos | filter:filtro">
-					<td><input type="checkbox" ng-model="contato.selecionado"/></td>
-					<td>{{contato.serial}}</td>
-					<td>{{contato.nome | name | elipsis:14}}</td>
-					<td>{{contato.telefone}}</td>
-					<td>{{contato.operadora.nome}}</td>
-					<td><div style="width: 50px; height: 50px" ng-style="{'background-color': contato.cor}"></div></td>
-				</tr>
-			</TBODY>
-		</table>	
-		
-		<h4>{{message}}</h4>
-		<form name="contatoForm">
-			<input class="form-control" ng-model="contato.nome" ng-required="true" type="text" placeholder="Nome" name="nome" ng-minlength="10">
-			<input class="form-control" ng-model="contato.telefone"  ng-required="true" type="text" placeholder="telefone" name="telefone" ng-pattern="/^\d{4,5}-\d{4}/">
-			<select class="form-control" ng-model="contato.operadora"  ng-required="true" ng-options="operadora.nome group by operadora.categoria for operadora in operadoras">
-					<option value="">Selecione uma operadora</option>
-			</select>
-				{{contato.data}}
-			<input type="text" class="form-control" ng-model="contato.data" name="data" 	placeholder="data" ui-date/>	
-		</form>
-		<div ng-messages="">
-		</div>
-		<div class="alert alert-danger" ng-show="contatoForm.nome.$error.required && contatoForm.nome.$dirty">
-			Por favor preencha o campo nome
-		</div>
-		<div class="alert alert-danger" ng-show="contatoForm.nome.$error.minlength" >
-			O campo nome deve possuir no mínimo 10 caracteres.
-		</div>	
-		<div class="alert alert-danger" ng-show="contatoForm.telefone.$error.pattern" >
-			O campo telefone deve ter o formato DDDD-DDDD ou DDDDD-DDDD.
-		</div>				
-	
-			<button ng-disabled="contatoForm.$invalid" ng-click="adicionarContato(contato)"  class="btn btn-block btn-primary" type="button">Adicionar Contato</button>		
-			<button ng-disabled="!isContatoSelecionado(contatos)" ng-click="apagarContatos(contatos)"  class="btn btn-block btn-danger" ng-if="isContatoSelecionado(contatos)" type="button">Apagar Contato</button>						
-	</div>
-
+<body >	
+	<div ng-view></div>
 	<div ng-include="'view/footer.html'">
 	</div>
 	
 	<script type="text/javascript" src="lib/angular/angular.min.js"></script>
 	<script type="text/javascript" src="lib/angular/angular-messages.js"></script>	
+	<script type="text/javascript" src="lib/angular/angular-route.min.js"></script>	
 	<script type="text/javascript" src="js/app.js"></script>	
+	<script type="text/javascript" src="js/config/routeConfig.js"></script>
 	<script type="text/javascript" src="lib/serialGenerator/serialGenerator.js"></script>	
 	<script type="text/javascript" src="lib/ui/ui.js"></script>	
 	<script type="text/javascript" src="js/value/configValue.js"></script>
 	<script type="text/javascript" src="js/services/listaTelefonicaService.js"></script>	
+	<script type="text/javascript" src="js/services/OperadoraService.js"></script>	
 	<script type="text/javascript" src="js/config/serialGeneratorConfig.js"></script>
 	<script type="text/javascript" src="js/controllers/listaTelefonicaCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/detalhesContatoCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/novoContatoCtrl.js"></script>	
 	<script type="text/javascript" src="js/filters/nameFilter.js"></script>
 	<script type="text/javascript" src="js/filters/elipsisFilter.js"></script>
 	<script type="text/javascript" src="js/directives/uiAlertDirective.js"></script>

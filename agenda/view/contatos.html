@@ -1,0 +1,46 @@
+<div class="jumbotron">	
+
+		<ui-accordions>
+			<ui-accordion title="accordion 1">
+			   Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+			</ui-accordion>	
+
+			<ui-accordion title="accordion 2">
+			   Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+			</ui-accordion>	
+		</ui-accordions>		
+
+		<h3>{{app}}</h3>	
+
+
+		<ui-Alert title="Ops, ocorreu um problema!" message="erro2">			
+			{{erro}}
+		</ui-alert>
+		<input type="text" class="form-control" ng-model="filtro" placeholder="O que voce procura?">
+		<table class="table" ng-show="contatos.length > 0">
+			<thead>
+				<th></th>
+				<th>Serial</th>
+				<th><a href="">Nome</th>
+				<th>Telefone</th>
+				<th>Operadora</th>
+				<th></th>
+			</thead>	
+			<TBODY>
+				<tr ng-class="{selecionado: contato.selecionado, negrito: contato.selecionado}" ng-repeat="contato in contatos | filter:filtro">
+					<td><input type="checkbox" ng-model="contato.selecionado"/></td>
+					<td>{{contato.serial}}</td>
+					<td><a href="/#/detalhesContato/{{contato.id}}">{{contato.nome | name | elipsis:14}}</a></td>
+					<td>{{contato.telefone}}</td>
+					<td>{{contato.operadora.nome}}</td>
+					<td><div style="width: 50px; height: 50px" ng-style="{'background-color': contato.cor}"></div></td>
+				</tr>
+			</TBODY>
+		</table>	
+		
+	<h4>{{message}}</h4>
+	<a class="btn btn-primary btn-block" href="#/novoContato">Novo contato</a>
+	<button ng-disabled="!isContatoSelecionado(contatos)" ng-click="apagarContatos(contatos)"  class="btn btn-block btn-danger" ng-if="isContatoSelecionado(contatos)" type="button">Apagar Contato</button>
+
+								
+</div>
