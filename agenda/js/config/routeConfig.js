@@ -10,7 +10,12 @@ angular.module("listaTelefonica").config(function($routeProvider){
 	})
 	.when("/detalhesContato/:id", {
 		templateUrl: "view/detalhesContato.html",
-		controller: "detalhesContatoCtrl"
+		controller: "detalhesContatoCtrl",
+		resolve: {
+			contato: function(listaTelefonicaService, $route){
+				return listaTelefonicaService.getContato($route.current.params.id);
+			}
+		}
 	})	
 	.when("/novoContato", {
 		templateUrl: "view/novoContato.html",
