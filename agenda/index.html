@@ -11,8 +11,21 @@
 </head>
 <body ng-controller="listaTelefonicaCtrl">
 
-	<div class="jumbotron">		
+	<div class="jumbotron">	
+
+		<ui-accordions>
+			<ui-accordion title="accordion 1">
+			   Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+			</ui-accordion>	
+
+			<ui-accordion title="accordion 2">
+			   Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+			</ui-accordion>	
+		</ui-accordions>		
+
 		<h3>{{app}}</h3>	
+
+
 		<ui-Alert title="Ops, ocorreu um problema!" message="erro2">			
 			{{erro}}
 		</ui-alert>
@@ -45,7 +58,8 @@
 			<select class="form-control" ng-model="contato.operadora"  ng-required="true" ng-options="operadora.nome group by operadora.categoria for operadora in operadoras">
 					<option value="">Selecione uma operadora</option>
 			</select>
-			<input type="text" class="form-control" ng-model="contato.data" name="data" placeholder="data" ui-date/>	
+				{{contato.data}}
+			<input type="text" class="form-control" ng-model="contato.data" name="data" 	placeholder="data" ui-date/>	
 		</form>
 		<div ng-messages="">
 		</div>
@@ -77,6 +91,7 @@
 	<script type="text/javascript" src="js/filters/elipsisFilter.js"></script>
 	<script type="text/javascript" src="js/directives/uiAlertDirective.js"></script>
 	<script type="text/javascript" src="js/directives/uiDateDirective.js"></script>
+	<script type="text/javascript" src="js/directives/uiAccordion.js"></script>
 
 
 	<script type="text/javascript" src="lib/bootstrap/js/jquery-1.12.4.min.js"></script>

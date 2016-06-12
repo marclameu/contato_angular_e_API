@@ -1,6 +1,9 @@
 angular.module("listaTelefonica")
 	.controller("listaTelefonicaCtrl", function($scope, $http, listaTelefonicaService, serialGenerator){
-		$scope.app = "Lista Telefonica";
+		$scope.app = "Lista Telefonica";	
+		$scope.contato = {
+			data: 417754800000
+		};	
 		$scope.operadoras = [
 			{nome: "Oi", codigo: 14, categoria: "celular"},
 			{nome: "Vivo", codigo: 15, categoria: "celular"},
@@ -9,8 +12,7 @@ angular.module("listaTelefonica")
 			{nome: "NET", codigo: 88, categoria: "fixo"}					
 		];
 
-		var carregarContatos = function(){
-			
+		var carregarContatos = function(){			
 			listaTelefonicaService.getContatos().then(function success(response){
 				$scope.contatos = response.data;				
 			}, function error(response){
