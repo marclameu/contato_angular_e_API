@@ -13,7 +13,7 @@
 		<h3>{{app}}</h3>	
 
 
-		<ui-Alert title="Ops, ocorreu um problema!" message="erro2">			
+		<ui-Alert title="Ops, ocorreu um problema!" ng-show="erro" message="erro2">			
 			{{erro}}
 		</ui-alert>
 		<input type="text" class="form-control" ng-model="filtro" placeholder="O que voce procura?">

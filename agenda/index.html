@@ -9,9 +9,16 @@
 
 	
 </head>
-<body >	
-	<div ng-view></div>
-	<div ng-include="'view/footer.html'">
+<body >		
+
+	<div class="jumbotron" ng-show="loading">
+		<h5>Carregando, por favor aguarde...</h5>
+	</div>
+
+	<div ng-hide="loading">
+		<div ng-view></div>
+		<div ng-include="'view/footer.html'">
+		</div>
 	</div>
 	
 	<script type="text/javascript" src="lib/angular/angular.min.js"></script>
@@ -25,6 +32,10 @@
 	<script type="text/javascript" src="js/services/listaTelefonicaService.js"></script>	
 	<script type="text/javascript" src="js/services/OperadoraService.js"></script>	
 	<script type="text/javascript" src="js/config/serialGeneratorConfig.js"></script>
+	<script type="text/javascript" src="js/config/interceptorsConfig.js"></script>
+	<script type="text/javascript" src="js/interceptors/errorInterceptor.js"></script>
+	<script type="text/javascript" src="js/interceptors/timestampInterceptor.js"></script>
+	<script type="text/javascript" src="js/interceptors/loadingInterceptor.js"></script>
 	<script type="text/javascript" src="js/controllers/listaTelefonicaCtrl.js"></script>
 	<script type="text/javascript" src="js/controllers/detalhesContatoCtrl.js"></script>
 	<script type="text/javascript" src="js/controllers/novoContatoCtrl.js"></script>	

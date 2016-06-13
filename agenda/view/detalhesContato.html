@@ -1,24 +1,23 @@
 <div class="jumbotron">
+	<table class="table">
+		<thead>		
+			<th>Serial</th>
+			<th>Nome</th>
+			<th>Telefone</th>
+			<th>Operadora</th>
+			<th></th>
+		</thead>
+		<TBODY>
+			<tr>
+				<td>{{contato.serial}}</td>
 
-<table class="table">
-	<thead>		
-		<th>Serial</th>
-		<th>Nome</th>
-		<th>Telefone</th>
-		<th>Operadora</th>
-		<th></th>
-	</thead>
-	<TBODY>
-		<tr>
-			<td>{{contato.serial}}</td>
+				<td>{{contato.nome}}</td>
+				<td>{{contato.telefone}}</td>
+				<td>{{contato.operadora.nome}}</td>
+				<td>
+			</tr>
+		</TBODY>	
+	</table>
 
-			<td>{{contato.nome}}</td>
-			<td>{{contato.telefone}}</td>
-			<td>{{contato.operadora.nome}}</td>
-			<td><div style="width: 50px; height: 50px" ng-style="{'background-color': contato.cor}">
-		</tr>
-	</TBODY>	
-</table>
-
-<a href="/#/contatos">Voltar</a>
+	<h4><a href="/#/contatos">Voltar</a></h4>
 </div>

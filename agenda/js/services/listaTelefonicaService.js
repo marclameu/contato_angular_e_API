@@ -18,8 +18,6 @@ angular.module("listaTelefonica")
 				ids[index] = contato.id;
 			});
 
-			console.log(ids);
-
 			//Náo consegui utiilzar o $http.delete() por problemas com o CORS.
 			return $http.post(config.baseUrl + '/delete', ids);
 

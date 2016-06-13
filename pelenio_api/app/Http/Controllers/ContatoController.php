@@ -16,7 +16,7 @@ class ContatoController extends Controller
 
     public function index()
     {
-    	$contatos = Contato::all();
+    	$contatos = Contato::all();        
     	return response()->json($contatos->toArray());
     }
 
@@ -27,9 +27,10 @@ class ContatoController extends Controller
     }
 
     public function show($id)
-    {
-    	$contato = new Contato();
+    {    	
         $contato = Contato::find($id);
+        if(is_null($contato))
+            return response()->json(["Mensagem" => "Registro não encontrado!"], 404);
         return response()->json($contato); 
     }
 

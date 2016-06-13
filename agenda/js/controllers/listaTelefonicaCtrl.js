@@ -3,9 +3,7 @@ angular.module("listaTelefonica")
 		$scope.app = "Lista Telefonica";	
 		$scope.contato = {
 			data: 417754800000
-		};	
-
-		console.log(contatosList);
+		};		
 
 		$scope.contatos = contatosList.data;
 
@@ -15,7 +13,7 @@ angular.module("listaTelefonica")
 			
 			listaTelefonicaService.deletarContatos(contatosSelecionados).success(function(response){
 					$scope.message = response["mensagem"] ;
-					$location.path("/contatos");
+					$location.path('/contatos');					
 			}).error(function(response){
 					$scope.message = response["mensagem"];
 			});
